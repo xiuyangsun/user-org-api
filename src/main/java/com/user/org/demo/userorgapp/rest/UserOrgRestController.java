@@ -48,8 +48,8 @@ public class UserOrgRestController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(res);
 	}
 
-
-
+	// expose "/userorg/org/{orgId}" to get All users belongs to a specific organization using orgId
+	
 	@GetMapping("/org/{orgId}")
 	public ResponseEntity<List<UserRes>> findUsersFromOrg(@PathVariable @Positive int orgId) {
 		Organization org = orgService.findOrgById(orgId);
@@ -59,6 +59,8 @@ public class UserOrgRestController {
 
 		return ResponseEntity.ok(res);
 	}
+	
+	// expose "/userorg/user/{userId} to find all organizations a user belongs to using userId
 
 	@GetMapping("/user/{userId}")
 	public ResponseEntity<List<OrganizationRes>> findOrgForUser(@PathVariable @Positive int userId) {
@@ -69,6 +71,8 @@ public class UserOrgRestController {
 
 		return ResponseEntity.ok(res);
 	}
+	
+	// expose "/userorg/{orgId}/{userId}" to delete a user from an organization
 
 	@PutMapping("/{orgId}/{userId}")
 	public ResponseEntity<List<UserRes>> deleteUserFromOrg(@PathVariable @Positive int orgId, @PathVariable @Positive int userId) {

@@ -1,5 +1,9 @@
 # user-org-api
 
+## Use Docker be initiate Mysql
+
+docker-compose up -d
+
 ## Build project
 
 mvn clean package
